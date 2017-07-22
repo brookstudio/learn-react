@@ -9,10 +9,17 @@ import registerServiceWorker from './registerServiceWorker';
 function Welcom(props){
     return <h1>Hello, {props.name}</h1>;
 }
-const element = <Welcom name="Sara"/>;
+function App1(){
+    return (
+        <div>
+            <Welcom name="Sara" />
+            <Welcom name="Cahal" />
+            <Welcom name="Edite" />
+        </div>);
+}
 
 ReactDOM.render(
-    element,
+    <App1 />,
     document.getElementById('root')
 );
 
