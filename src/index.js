@@ -6,18 +6,14 @@ import registerServiceWorker from './registerServiceWorker';
 
 //ReactDOM.render(<App />, document.getElementById('root'));
 
-function tick() {
-  const element = (
-    <div>
-      <h1>Hello, world!</h1>
-      <h2>It is {new Date().toLocaleTimeString()}.</h2>
-    </div>
-  );
-  ReactDOM.render(
+function Welcom(props){
+    return <h1>Hello, {props.name}</h1>;
+}
+const element = <Welcom name="Sara"/>;
+
+ReactDOM.render(
     element,
     document.getElementById('root')
-  );
-}
+);
 
-setInterval(tick, 1000);
 registerServiceWorker();
