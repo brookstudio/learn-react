@@ -6,20 +6,51 @@ import registerServiceWorker from './registerServiceWorker';
 
 //ReactDOM.render(<App />, document.getElementById('root'));
 
-function Welcom(props){
-    return <h1>Hello, {props.name}</h1>;
-}
-function App1(){
+function Avator(props){
     return (
-        <div>
-            <Welcom name="Sara" />
-            <Welcom name="Cahal" />
-            <Welcom name="Edite" />
-        </div>);
+        <img className="Avatar"
+            src={props.user.avatarUrl}
+            alt={props.user.name}
+        />
+    );
 }
+function UserInfo(props){
+    return (
+        <div className="UserInfo">
+            <Avator user={props.user} />
+            <div className="UserInfo-name">
+                {props.user.name}
+            </div>
+        </div>
+    );
+}
+function Comment(props){
+    return (
+        <div className="Comment">
+            <UserInfo user={props.author} />
+            <div className="Comment-text">
+                {props.text}
+            </div>
+            <div className="Comment-data">
+                {formatDate(props.date)}
+            </div>
+        </div>
+    )
+}
+function formatDate(date){
+    return date.toLocaleTimeString();
+}
+const comment = {
+    author:{
+        name:'Tom',
+        avatarUrl:'https://facebook.github.io/react/img/logo.svg'
+    },
+    text:'This is a comment',
+    date:new Date()
+};
 
 ReactDOM.render(
-    <App1 />,
+    <Comment author={comment.author} text={comment.text} date={comment.date} />,
     document.getElementById('root')
 );
 
